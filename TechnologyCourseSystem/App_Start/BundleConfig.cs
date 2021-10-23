@@ -22,11 +22,15 @@ namespace TechnologyCourseSystem
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            // I added the dataTable.js to the bundle called mapbox.
+            // I added the dataTable.js to the bundle called datatable.
             bundles.Add(new ScriptBundle("~/bundles/datatable").Include(
                       "~/Scripts/DataTables/jquery.dataTables.js",
                       "~/Scripts/DataTables/dataTables.bootstrap.js", 
                       "~/Scripts/dataTable.js"));
+
+            // I added the location.js to the bundle called mapbox.
+            bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
+                      "~/Scripts/location.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

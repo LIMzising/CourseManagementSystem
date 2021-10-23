@@ -15,14 +15,14 @@ namespace TechnologyCourseSystem.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Training Tomorrow’s Tech description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Training Tomorrow’s Tech contact page.";
 
             return View();
         }
