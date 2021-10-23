@@ -11,30 +11,38 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrainerSpecialisation)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainerSpecialisation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrainerSpecialisation)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TrainerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TrainerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TrainerId })
-        </td>
-    </tr>
-}
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainerSpecialisation)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TrainerId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TrainerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TrainerId })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+@section Scripts {
+    @Scripts.Render("~/bundles/datatable")
+}
