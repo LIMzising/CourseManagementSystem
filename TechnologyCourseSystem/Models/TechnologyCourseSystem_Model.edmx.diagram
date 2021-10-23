@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06b95fb8766c4d268b47f27b5b3643fc" Name="Diagram1">
+        <EntityTypeShape EntityType="TechnologyCourseSystem_DatabaseModel.Booking" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechnologyCourseSystem_DatabaseModel.Cours" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechnologyCourseSystem_DatabaseModel.Location" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechnologyCourseSystem_DatabaseModel.Trainer" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="TechnologyCourseSystem_DatabaseModel.FK__Bookings__Course__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="TechnologyCourseSystem_DatabaseModel.FK__Courses__Locatio__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="TechnologyCourseSystem_DatabaseModel.FK__Courses__Trainer__300424B4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TechnologyCourseSystem.Models.Location>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationLatitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationLongitude)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationLatitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationLongitude)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LocationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LocationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LocationId })
+        </td>
+    </tr>
+}
+
+</table>
