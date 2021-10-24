@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,6 +11,7 @@ using TechnologyCourseSystem.Models;
 
 namespace TechnologyCourseSystem.Controllers
 {
+    [Authorize]
     public class BookingsController : Controller
     {
         private TechnologyCourseSystem_DatabaseEntities db = new TechnologyCourseSystem_DatabaseEntities();
@@ -17,8 +19,18 @@ namespace TechnologyCourseSystem.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
-            var bookings = db.Bookings.Include(b => b.Cours);
-            return View(bookings.ToList());
+            if (User.IsInRole("Manager"))
+            {
+                var bookings = db.Bookings.Include(b => b.Cours);
+                return View(bookings.ToList()); 
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                var bookings = db.Bookings.Where(s => s.UserId ==
+                userId).ToList();
+                return View(bookings);
+            }
         }
 
         // GET: Bookings/Details/5
@@ -48,8 +60,12 @@ namespace TechnologyCourseSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookingId,BookingDate,CourseId,UserId")] Booking booking)
+        public ActionResult Create([Bind(Include = "BookingId,BookingDate,CourseId")] Booking booking)
         {
+            booking.UserId = User.Identity.GetUserId();
+            ModelState.Clear();
+            TryValidateModel(booking);
+
             if (ModelState.IsValid)
             {
                 db.Bookings.Add(booking);

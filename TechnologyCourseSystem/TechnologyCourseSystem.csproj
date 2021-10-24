@@ -183,6 +183,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AspNetRolesController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\CoursController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -193,6 +195,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>Identity_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>Identity_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Booking.cs">
       <DependentUpon>TechnologyCourseSystem_Model.tt</DependentUpon>
     </Compile>
@@ -200,6 +208,21 @@
       <DependentUpon>TechnologyCourseSystem_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Identity_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Identity_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Identity_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Identity_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Identity_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Identity_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Location.cs">
       <DependentUpon>TechnologyCourseSystem_Model.tt</DependentUpon>
     </Compile>
@@ -395,6 +418,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Identity_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Identity_Model.edmx</DependentUpon>
+      <LastGenOutput>Identity_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Identity_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Identity_Model.edmx</DependentUpon>
+      <LastGenOutput>Identity_Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\TechnologyCourseSystem_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TechnologyCourseSystem_Model.edmx</DependentUpon>
@@ -417,6 +450,13 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <EntityDeploy Include="Models\Identity_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Identity_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Identity_Model.edmx.diagram">
+      <DependentUpon>Identity_Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dataTable.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -560,6 +600,16 @@
     <Content Include="Views\Bookings\Details.cshtml" />
     <Content Include="Views\Bookings\Edit.cshtml" />
     <Content Include="Views\Bookings\Index.cshtml" />
+    <Content Include="Views\AspNetUsers\Create.cshtml" />
+    <Content Include="Views\AspNetUsers\Delete.cshtml" />
+    <Content Include="Views\AspNetUsers\Details.cshtml" />
+    <Content Include="Views\AspNetUsers\Edit.cshtml" />
+    <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\AspNetRoles\Create.cshtml" />
+    <Content Include="Views\AspNetRoles\Delete.cshtml" />
+    <Content Include="Views\AspNetRoles\Details.cshtml" />
+    <Content Include="Views\AspNetRoles\Edit.cshtml" />
+    <Content Include="Views\AspNetRoles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

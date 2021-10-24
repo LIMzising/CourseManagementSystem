@@ -13,10 +13,10 @@ namespace TechnologyCourseSystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TechnologyCourseSystem_DatabaseEntities : DbContext
+    public partial class Identity_Entities : DbContext
     {
-        public TechnologyCourseSystem_DatabaseEntities()
-            : base("name=TechnologyCourseSystem_DatabaseEntities")
+        public Identity_Entities()
+            : base("name=Identity_Entities")
         {
         }
     
@@ -25,13 +25,7 @@ namespace TechnologyCourseSystem.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Booking> Bookings { get; set; }
-        public virtual DbSet<Cours> Courses { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<Trainer> Trainers { get; set; }
-
-        public System.Data.Entity.DbSet<TechnologyCourseSystem.Models.AspNetUser> AspNetUsers { get; set; }
-
-        public System.Data.Entity.DbSet<TechnologyCourseSystem.Models.AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }

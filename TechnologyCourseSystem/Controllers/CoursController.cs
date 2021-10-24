@@ -22,6 +22,7 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         // GET: Cours/Details/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +38,7 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         // GET: Cours/Create
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Create()
         {
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
@@ -47,6 +49,7 @@ namespace TechnologyCourseSystem.Controllers
         // POST: Cours/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CourseId,CourseName,CourseDescription,CourseCategory,LocationId,TrainerId")] Cours cours)
@@ -64,6 +67,7 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         // GET: Cours/Edit/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +87,7 @@ namespace TechnologyCourseSystem.Controllers
         // POST: Cours/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CourseId,CourseName,CourseDescription,CourseCategory,LocationId,TrainerId")] Cours cours)
@@ -99,6 +104,7 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         // GET: Cours/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,6 +120,7 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         // POST: Cours/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

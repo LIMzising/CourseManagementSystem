@@ -34,9 +34,18 @@
                     @Html.DisplayFor(modelItem => item.TrainerSpecialisation)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.TrainerId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.TrainerId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.TrainerId })
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.TrainerId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.TrainerId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.TrainerId })
+                            </p>
+                        }
+                    }
+                    
                 </td>
             </tr>
         }

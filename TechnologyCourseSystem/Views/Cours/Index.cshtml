@@ -35,28 +35,37 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseCategory)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location.LocationName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Trainer.TrainerName)
-                </td>
-                <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.LocationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainer.TrainerName)
+            </td>
+            <td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin") || User.IsInRole("Manager") )
+                    {
+                <p>
                     @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
-                </td>
-            </tr>
+                </p>
+                }
+            }
+            </td>
+
+        </tr>
         }
     </tbody>
 

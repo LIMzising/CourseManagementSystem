@@ -36,7 +36,15 @@
                     <li>@Html.ActionLink("Location", "Index", "Locations")</li>
                     <li>@Html.ActionLink("Trainer", "Index", "Trainers")</li>
                     <li>@Html.ActionLink("Course", "Index", "Cours")</li>
-                    <li>@Html.ActionLink("Booking", "Index", "Bookings")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Booking", "Index", "Bookings")</li>
+                        if (User.IsInRole("Manager"))
+                        {
+                            <li>@Html.ActionLink("User", "Index", "AspNetUsers")</li>
+                            <li>@Html.ActionLink("Role", "Index", "AspNetRoles")</li>
+                        }
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

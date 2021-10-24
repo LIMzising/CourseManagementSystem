@@ -47,9 +47,18 @@
                     @Html.DisplayFor(modelItem => item.LocationLongitude)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.LocationId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.LocationId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+                            </p>
+                        }
+                    }
+                    
                 </td>
             </tr>
         }

@@ -10,114 +10,108 @@ using TechnologyCourseSystem.Models;
 
 namespace TechnologyCourseSystem.Controllers
 {
-    public class LocationsController : Controller
+    [Authorize(Roles = "Manager")]
+    public class AspNetRolesController : Controller
     {
-        private TechnologyCourseSystem_DatabaseEntities db = new TechnologyCourseSystem_DatabaseEntities();
+        private Identity_Entities db = new Identity_Entities();
 
-        // GET: Locations
+        // GET: AspNetRoles
         public ActionResult Index()
         {
-            return View(db.Locations.ToList());
+            return View(db.AspNetRoles.ToList());
         }
 
-        // GET: Locations/Details/5
-        [Authorize(Roles = "Admin, Manager")]
-        public ActionResult Details(int? id)
+        // GET: AspNetRoles/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Location location = db.Locations.Find(id);
-            if (location == null)
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            if (aspNetRole == null)
             {
                 return HttpNotFound();
             }
-            return View(location);
+            return View(aspNetRole);
         }
 
-        // GET: Locations/Create
-        [Authorize(Roles = "Admin, Manager")]
+        // GET: AspNetRoles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Locations/Create
+        // POST: AspNetRoles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin, Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LocationId,LocationName,LocationAddress,LocationLatitude,LocationLongitude")] Location location)
+        public ActionResult Create([Bind(Include = "Id,Name")] AspNetRole aspNetRole)
         {
             if (ModelState.IsValid)
             {
-                db.Locations.Add(location);
+                db.AspNetRoles.Add(aspNetRole);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(location);
+            return View(aspNetRole);
         }
 
-        // GET: Locations/Edit/5
-        [Authorize(Roles = "Admin, Manager")]
-        public ActionResult Edit(int? id)
+        // GET: AspNetRoles/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Location location = db.Locations.Find(id);
-            if (location == null)
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            if (aspNetRole == null)
             {
                 return HttpNotFound();
             }
-            return View(location);
+            return View(aspNetRole);
         }
 
-        // POST: Locations/Edit/5
+        // POST: AspNetRoles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin, Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LocationId,LocationName,LocationAddress,LocationLatitude,LocationLongitude")] Location location)
+        public ActionResult Edit([Bind(Include = "Id,Name")] AspNetRole aspNetRole)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(location).State = EntityState.Modified;
+                db.Entry(aspNetRole).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(location);
+            return View(aspNetRole);
         }
 
-        // GET: Locations/Delete/5
-        [Authorize(Roles = "Admin, Manager")]
-        public ActionResult Delete(int? id)
+        // GET: AspNetRoles/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Location location = db.Locations.Find(id);
-            if (location == null)
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            if (aspNetRole == null)
             {
                 return HttpNotFound();
             }
-            return View(location);
+            return View(aspNetRole);
         }
 
-        // POST: Locations/Delete/5
-        [Authorize(Roles = "Admin, Manager")]
+        // POST: AspNetRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Location location = db.Locations.Find(id);
-            db.Locations.Remove(location);
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            db.AspNetRoles.Remove(aspNetRole);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
