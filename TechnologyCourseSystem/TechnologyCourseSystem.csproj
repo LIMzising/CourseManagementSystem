@@ -234,6 +234,8 @@
       <DependentUpon>TechnologyCourseSystem_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\PartialClass.cs" />
     <Compile Include="Models\Rating.cs">
       <DependentUpon>TechnologyCourseSystem_Model.tt</DependentUpon>
     </Compile>
@@ -430,6 +432,7 @@
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\fullcalendar.print.min.css" />
+    <Content Include="Content\img.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\Logo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

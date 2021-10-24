@@ -8,7 +8,7 @@ using TechnologyCourseSystem.Utils;
 
 namespace TechnologyCourseSystem.Controllers
 {
-    //[RequireHttps]
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -36,6 +36,7 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Question(SendEmailViewModel model)
         {
             if (ModelState.IsValid)
@@ -48,7 +49,6 @@ namespace TechnologyCourseSystem.Controllers
 
                     EmailSender es = new EmailSender();
                     es.Send(toEmail, subject, contents);
-                    //es.Send(subject, contents);
 
                     ViewBag.Result = "Email has been send.";
 

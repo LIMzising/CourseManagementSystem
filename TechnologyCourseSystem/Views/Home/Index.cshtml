@@ -2,6 +2,9 @@
     ViewBag.Title = "Home Page";
 }
 
+<link href="~/Content/img.css" rel="stylesheet" />
+<div class="img-container"><img src="~/Files/Logo.png"/></div>
+
 <div class="jumbotron">
     <h1>Training Tomorrow’s Tech</h1>
     <p class="lead">Training Tomorrow’s Tech provides a variety of IT training courses for those with little or no IT background.</p>
@@ -24,6 +27,6 @@
     <div class="col-md-4">
         <h2>Q&A</h2>
         <p>Ask us about anything!</p>
-        <p>@Html.ActionLink("Click me >> ", "Send_Email", "Home")</p>
+        <p>@Html.ActionLink("Click me >> ", "Question", "Home")</p>
     </div>
 </div>
