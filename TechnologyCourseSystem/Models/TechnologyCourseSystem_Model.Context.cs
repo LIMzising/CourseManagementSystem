@@ -29,9 +29,6 @@ namespace TechnologyCourseSystem.Models
         public virtual DbSet<Cours> Courses { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Trainer> Trainers { get; set; }
-
-        public System.Data.Entity.DbSet<TechnologyCourseSystem.Models.AspNetUser> AspNetUsers { get; set; }
-
-        public System.Data.Entity.DbSet<TechnologyCourseSystem.Models.AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
     }
 }

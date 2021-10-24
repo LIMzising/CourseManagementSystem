@@ -18,6 +18,7 @@ namespace TechnologyCourseSystem.Models
         public Cours()
         {
             this.Bookings = new HashSet<Booking>();
+            this.Ratings = new HashSet<Rating>();
         }
     
         public int CourseId { get; set; }
@@ -31,5 +32,7 @@ namespace TechnologyCourseSystem.Models
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual Location Location { get; set; }
         public virtual Trainer Trainer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

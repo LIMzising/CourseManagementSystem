@@ -17,6 +17,10 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
 
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.css" />
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -39,6 +43,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Booking", "Index", "Bookings")</li>
+                        <li>@Html.ActionLink("Rating", "Index", "Ratings")</li>
                         if (User.IsInRole("Manager"))
                         {
                             <li>@Html.ActionLink("User", "Index", "AspNetUsers")</li>

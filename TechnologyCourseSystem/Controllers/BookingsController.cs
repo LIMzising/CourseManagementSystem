@@ -19,7 +19,7 @@ namespace TechnologyCourseSystem.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
-            if (User.IsInRole("Manager"))
+            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
             {
                 var bookings = db.Bookings.Include(b => b.Cours);
                 return View(bookings.ToList()); 
@@ -49,10 +49,17 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         // GET: Bookings/Create
-        public ActionResult Create()
+        public ActionResult Create(String date)
         {
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
-            return View();
+            //return View();
+
+            if (null == date)
+                return RedirectToAction("Index");
+            Booking e = new Booking();
+            DateTime convertedDate = DateTime.Parse(date);
+            e.BookingDate = convertedDate;
+            return View(e);
         }
 
         // POST: Bookings/Create

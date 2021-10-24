@@ -35,6 +35,13 @@ namespace TechnologyCourseSystem
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
+                     "~/Scripts/lib/jquery.min.js",
+                     "~/Scripts/lib/moment.min.js",
+                     "~/Scripts/fullcalendar.js",
+                     "~/Scripts/calendar.js"
+                     ));
         }
     }
 }

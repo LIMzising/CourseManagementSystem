@@ -5,11 +5,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Booking</h2>
+<h4>Index</h4>
+<br />
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+<div id="calendar"></div>
+<div style="display: none">
+    <table class="table">
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cours.CourseName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="events">
+                <td class="start">
+                    @Html.DisplayFor(modelItem => item.BookingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td class="title">
+                    @Html.DisplayFor(modelItem => item.Cours.CourseName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BookingId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BookingId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -51,4 +94,5 @@
 </table>
 @section Scripts {
     @Scripts.Render("~/bundles/datatable")
+    @Scripts.Render("~/bundles/fullcalendar")
 }

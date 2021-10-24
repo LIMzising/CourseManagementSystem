@@ -22,7 +22,6 @@ namespace TechnologyCourseSystem.Controllers
         }
 
         // GET: Cours/Details/5
-        [Authorize(Roles = "Admin, Manager")]
         public ActionResult Details(int? id)
         {
             if (id == null)

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TechnologyCourseSystem_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TechnologyCourseSystem_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bookings">
           <Key>
             <PropertyRef Name="BookingId" />
@@ -34,6 +34,14 @@
           <Property Name="LocationAddress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="LocationLatitude" Type="numeric" Precision="10" Scale="8" Nullable="false" />
           <Property Name="LocationLongitude" Type="numeric" Precision="11" Scale="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RatingScore" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Trainers">
           <Key>
@@ -79,10 +87,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Ratings__CourseI__36B12243">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TechnologyCourseSystem_DatabaseModelStoreContainer">
           <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainers" EntityType="Self.Trainers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Bookings__Course__32E0915F" Association="Self.FK__Bookings__Course__32E0915F">
             <End Role="Courses" EntitySet="Courses" />
@@ -96,9 +117,12 @@
             <End Role="Trainers" EntitySet="Trainers" />
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
+          <AssociationSet Name="FK__Ratings__CourseI__36B12243" Association="Self.FK__Ratings__CourseI__36B12243">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TechnologyCourseSystem_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -125,6 +149,7 @@
           <NavigationProperty Name="Bookings" Relationship="Self.FK__Bookings__Course__32E0915F" FromRole="Courses" ToRole="Bookings" />
           <NavigationProperty Name="Location" Relationship="Self.FK__Courses__Locatio__2F10007B" FromRole="Courses" ToRole="Locations" />
           <NavigationProperty Name="Trainer" Relationship="Self.FK__Courses__Trainer__300424B4" FromRole="Courses" ToRole="Trainers" />
+          <NavigationProperty Name="Ratings" Relationship="TechnologyCourseSystem_DatabaseModel.FK__Ratings__CourseI__36B12243" FromRole="Cours" ToRole="Rating" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -199,7 +224,33 @@
             <End Role="Trainers" EntitySet="Trainers" />
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
+          <EntitySet Name="Ratings" EntityType="TechnologyCourseSystem_DatabaseModel.Rating" />
+          <AssociationSet Name="FK__Ratings__CourseI__36B12243" Association="TechnologyCourseSystem_DatabaseModel.FK__Ratings__CourseI__36B12243">
+            <End Role="Cours" EntitySet="Courses" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RatingScore" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="TechnologyCourseSystem_DatabaseModel.FK__Ratings__CourseI__36B12243" FromRole="Rating" ToRole="Cours" />
+        </EntityType>
+        <Association Name="FK__Ratings__CourseI__36B12243">
+          <End Type="TechnologyCourseSystem_DatabaseModel.Cours" Role="Cours" Multiplicity="1" />
+          <End Type="TechnologyCourseSystem_DatabaseModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cours">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -245,6 +296,15 @@
                 <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
                 <ScalarProperty Name="TrainerName" ColumnName="TrainerName" />
                 <ScalarProperty Name="TrainerSpecialisation" ColumnName="TrainerSpecialisation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="TechnologyCourseSystem_DatabaseModel.Rating">
+              <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="RatingScore" ColumnName="RatingScore" />
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

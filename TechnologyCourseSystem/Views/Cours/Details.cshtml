@@ -52,8 +52,48 @@
         </dd>
 
     </dl>
+    <br />
+    <h3>Rating</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Rating Id
+                </th>
+                <th>
+                    Rating Score
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Ratings)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RatingId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RatingScore)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }) |
+@if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+else
+{
     @Html.ActionLink("Back to List", "Index")
-</p>
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/datatable")
+}

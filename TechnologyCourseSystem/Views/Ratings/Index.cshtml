@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TechnologyCourseSystem.Models.Rating>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rating</h2>
+<h4>Index</h4>
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cours.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RatingScore)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cours.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RatingScore)
+                </td>
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.RatingId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.RatingId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.RatingId })
+                            </p>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/datatable")
+}

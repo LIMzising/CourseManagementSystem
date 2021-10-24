@@ -12,6 +12,8 @@
         <AssociationConnector Association="TechnologyCourseSystem_DatabaseModel.FK__Bookings__Course__32E0915F" ManuallyRouted="false" />
         <AssociationConnector Association="TechnologyCourseSystem_DatabaseModel.FK__Courses__Locatio__2F10007B" ManuallyRouted="false" />
         <AssociationConnector Association="TechnologyCourseSystem_DatabaseModel.FK__Courses__Trainer__300424B4" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TechnologyCourseSystem_DatabaseModel.Rating" Width="1.5" PointX="5.25" PointY="4.625" />
+        <AssociationConnector Association="TechnologyCourseSystem_DatabaseModel.FK__Ratings__CourseI__36B12243" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

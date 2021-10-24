@@ -11,8 +11,7 @@ namespace TechnologyCourseSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Location
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,11 +23,7 @@ namespace TechnologyCourseSystem.Models
         public int LocationId { get; set; }
         public string LocationName { get; set; }
         public string LocationAddress { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:###.########}")]
         public decimal LocationLatitude { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:###.########}")]
         public decimal LocationLongitude { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
