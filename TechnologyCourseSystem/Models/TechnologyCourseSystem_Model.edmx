@@ -51,8 +51,10 @@
           <Property Name="TrainerName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TrainerSpecialisation" Type="nvarchar(max)" />
         </EntityType>
-        <Association Name="FK__Bookings__Course__32E0915F">
-          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+        <Association Name="FK__Bookings__Course__5AEE82B9">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Courses">
@@ -63,8 +65,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Courses__Locatio__2F10007B">
-          <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
+        <Association Name="FK__Courses__Locatio__47DBAE45">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Locations">
@@ -75,8 +79,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Courses__Trainer__300424B4">
-          <End Role="Trainers" Type="Self.Trainers" Multiplicity="1" />
+        <Association Name="FK__Courses__Trainer__48CFD27E">
+          <End Role="Trainers" Type="Self.Trainers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Trainers">
@@ -87,8 +93,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ratings__CourseI__36B12243">
-          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+        <Association Name="FK__Ratings__CourseI__6E01572D">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Courses">
@@ -105,19 +113,19 @@
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainers" EntityType="Self.Trainers" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Bookings__Course__32E0915F" Association="Self.FK__Bookings__Course__32E0915F">
+          <AssociationSet Name="FK__Bookings__Course__5AEE82B9" Association="Self.FK__Bookings__Course__5AEE82B9">
             <End Role="Courses" EntitySet="Courses" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Courses__Locatio__2F10007B" Association="Self.FK__Courses__Locatio__2F10007B">
+          <AssociationSet Name="FK__Courses__Locatio__47DBAE45" Association="Self.FK__Courses__Locatio__47DBAE45">
             <End Role="Locations" EntitySet="Locations" />
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__Courses__Trainer__300424B4" Association="Self.FK__Courses__Trainer__300424B4">
+          <AssociationSet Name="FK__Courses__Trainer__48CFD27E" Association="Self.FK__Courses__Trainer__48CFD27E">
             <End Role="Trainers" EntitySet="Trainers" />
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ratings__CourseI__36B12243" Association="Self.FK__Ratings__CourseI__36B12243">
+          <AssociationSet Name="FK__Ratings__CourseI__6E01572D" Association="Self.FK__Ratings__CourseI__6E01572D">
             <End Role="Courses" EntitySet="Courses" />
             <End Role="Ratings" EntitySet="Ratings" />
           </AssociationSet>

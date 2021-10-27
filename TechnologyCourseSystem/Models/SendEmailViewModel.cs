@@ -10,7 +10,7 @@ namespace TechnologyCourseSystem.Models
     {
         [Display(Name = "Your Email Address")]
         [Required(ErrorMessage = "Please enter an email address.")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        //[EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter a title.")]
